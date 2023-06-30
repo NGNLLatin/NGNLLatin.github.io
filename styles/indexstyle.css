@@ -1,0 +1,88 @@
+/*
+
+Table of Contents:
+
+1. Font Style, General Color Definitions
+2. General Styling
+3. Navigation
+4. Index Styling (main)
+
+*/
+
+
+/* 1. Font Style, General Color Definitions */
+
+:root {
+	--fs-general: clamp(1.2rem, 2vw, 1.47rem);
+	
+	--clr-links-base: #40F0E0;
+	--clr-links-hover: #11FF00;
+	
+	--clr-nav-bg: rgba(100, 100, 100, 0.7);
+	--clr-nav-border: rgba(0, 115, 255, 0.5);
+	--clr-index-bg: rgba(0, 50, 120, 0.7);
+}
+
+
+/* 2. General Styling  */
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	word-wrap: break-word;
+	
+	background-color: silver;
+	
+	color: white;
+	font-size: var(--fs-general);
+	text-shadow: 1px 1px black;
+}
+
+a {
+	text-decoration: none;
+	color: var(--clr-links-base);
+}
+
+a:hover {
+	color: var(--clr-links-hover);
+}
+
+a:active {
+	color: lightgreen;
+	border: 2px solid red;
+}
+
+.center {
+	text-align: center;
+}
+
+
+/* 3. Navigation  */
+
+nav a {
+	background-color: var(--clr-nav-bg);
+	padding: 0.5rem 0.55rem;
+	border-inline: 0.3rem solid var(--clr-nav-border);
+	
+	display: inline-block; /* Display on multiple lines if no room without breaking up options across lines, as is the case for inline  */
+	margin: 0.2rem 0.3rem;
+}
+
+
+/* 4. Index Styling (main) */
+
+main {
+	width: 80%;
+	margin-inline: auto;
+
+	background-color: var(--clr-index-bg);
+	border: 4px solid blue;
+}
+
+main h1, main p, .sub_index p {
+	width: min(75ch, 93%);
+	margin-inline: auto;
+}

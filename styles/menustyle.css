@@ -1,0 +1,226 @@
+/*
+
+I. Table of Contents:
+
+I. Table of Contents
+II. General NGNL Latin Webpage-making Recommendations
+    II.1 Note
+    II.2 Recommendations
+        II.2.1 CSS
+     	II.2.2 HTML
+     	II.2.3 General
+    	II.2.4 Stylesheet Linking
+III. Page Specifications 
+    III.1 Book Pages
+	
+1. Font Size, Complex Color Definitions
+2. General Styling & Header
+3. Navigation
+4. About NGNL & NGNL Latin, Tiny Index (main)
+
+
+II. General NGNL Latin Webpage-making recommendations:
+
+II.1 Note: 
+
+We urge no one to feel guilty over not seeing this before starting work, but to simply re-order their existing work, checking off each convention/recommendation one by one in the listed order of importance.
+
+"A good plan executed now is better than a perfect plan executed one week later." - George S. Patton, U.S WW2 commander on the western front
+
+ Have a nice day! 
+
+
+II.2 Recommendations:
+
+II.2.1 CSS:
+
+1. Add comments as you work. Document your thought processes while they're fresh.
+
+2. Keep all colors, font sizes and in general complex things that get may get changed inside root.
+
+3. Organize stylesheets into sections. Attempt to find meaningful names for each section. 
+
+Inability to find meaningful names is often a sign of weak partitioning.
+
+For example, in the case of the pagestyle.css file, two pargraphs with their own classes are used. p_num and next_page_link. 
+
+This could have been done with one class, let's call it p_end. Then, the two elements of p_end could be selected (with ".p_end > *") and receive the proprety of "display: block;" and it would give the same result.
+
+Can anyone tell me why I used two classes p_num and next_page_link even if it requires more finger power?
+
+
+That's right, p_end is so wishy-washy! What do you mean "page end"? 
+- "The end of the page"
+What if I want to know more about it at first glance? What did the author mean?
+
+
+4. Start with the most general selectors and work your way towards classes, and finally IDs ( e.g :root, * -> body -> a -> .center 
+
+5. Arrange propreties into groups. Arrange said blank line separated groups based on importance/sub-groups and importance.
+
+6. Add new lines and spaces liberally. "Would a new line here make it more readable if I was new to this stylesheet?" "Would I want my head to look like this?"
+
+
+II.2.2 HTML:
+
+1. Accessibility data first, style data second.
+
+
+II.2.3 General:
+
+1. Copy your boilerplate code (code used multiple times) by hand the first few times it is used. This will help you write cleaner, error-free, easy to maintain code.
+
+It's not about what you're doing, it's the amount of power you do it with. 
+Doing something mundane with high care several times ensures the mundane is made beauty. Ahem, "it's not about getting the right friend. (Unless they're trying to beat you up, then run!!)"
+
+
+II.2.4 Stylesheet Linking:
+
+1. Put general stylesheets inside styles folder.
+2. Put particular stylesheets in the same folder as the html file that links to them.
+
+
+
+III Page Specifications
+
+III.1 Book Pages - See styles/pagestyle.css III
+
+All usages of the word "we" refer to NGNL Latin and subsidiaries! 
+
+*/
+
+
+/* 1. Font Size, Complex Color Definitions  */
+
+:root {
+	--fs-general: clamp(1.1rem, 1.8vw, 1.37rem);
+
+    --clr-header-bg: rgba(0, 0, 0, 0.2);
+	--clr-nav-bg: rgba(0, 50, 120, 0.5);
+	--clr-nav-border: rgba(0, 115, 255, 0.5);
+	
+	--clr-links-base: #40F0E0;
+	--clr-links-hover: #11FF00;
+}
+
+/* 2. General Styling */
+
+*, *::before, *::after {
+	box-sizing: border-box; /* Always great to add, it's easier to work with, see the vide on it by Kevin Powell, the <i>CSS evangelist</i>( *cough* I love you Kevin, thanks for teaching me CSS + core basics of caligraphy)!  */
+}
+
+body {
+	margin: 0;
+	word-wrap: break-word;
+	
+	/*  Hello!
+	
+	A "../* is used in the image url because a relative path is based on where the stylesheet is. 
+	
+	The stylesheet is in a folder adjacent to backgrounds_and_icons. the index.html file is in the parent of both folders.
+	
+	Know your meme (paths).
+	Also, keep using relative paths in case this webpage, or any other using them is downloaded.
+	
+	Exception: Links that simply call to you: "Write me as an absolute link!"
+	
+	Signing out!  */
+	
+	background-image: url('../backgrounds_and_icons/Scene_of_disboard.webp');
+	background-size: cover;
+	background-repeat: none;
+	background-attachment: fixed;
+	
+	color: white;
+	font-size: var(--fs-general);
+	text-shadow: 1px 1px black;
+}
+
+p {
+	max-width: 75ch;
+	text-indent: 4ch;
+}
+
+a {
+	text-decoration: none;
+	color: var(--clr-links-base);
+}
+
+a:hover {
+	color: var(--clr-links-hover);
+}
+
+a:active {
+	color: lightgreen;
+	outline: 2px solid red;
+}
+
+.center {
+	text-align: center;
+}
+
+header {
+	background-color: var(--clr-header-bg);
+}
+
+
+/* 3. Navigation  */
+
+nav {
+	background-color: var(--clr-nav-bg);
+	padding: 0.05rem 0.3rem; /* top and bottom padding  also taken care of by the items (represented with anchor elememts)' margins!  */
+}
+
+nav a {
+	border-inline: 5px solid var(--clr-nav-border); /* border(-direction/"inline"): size way color;  
+	
+	Here,
+	color = var(--clr-nav-border)  */
+	padding: 0 0.2rem;
+	
+	/* Overcrowding: Display items(represented with anchor elements)  on multiple lines.
+
+	1. Wihout being split up (so display inline block to reset defaulton display of inline)
+
+    2. Cute spacing (margins)  */
+
+	display: inline-block;
+	margin: 0.2rem 0.4rem;
+}
+
+
+/* 4. About NGNL & NGNL Latin, Tiny Index (main)  */
+
+main {
+	width: 92%;
+	margin-inline: auto;
+	
+	display: flex;
+	flex-direction: column;
+}
+
+@media (min-width: 420px) { /* Decision of "what min-width to use??" made based on slightly off results at 414px width testing (iPhone XR)  */
+
+    main {
+		flex-direction: row;
+	}
+	
+	main > * {
+		flex-basis: 100%;
+	}
+	
+	main > * + * {
+		margin-left: 1.2rem;
+	}
+}
+
+/* From old version, kept here for usage in illustrations since comment turned out neat.  
+
+img {
+	max-width: 50%; 
+	/* Stop scaling if you've already got all the space you need... greedy... 
+	
+	Note: As of vol. XII Sora has never been in the covers.	 \*\/
+}
+
+*/

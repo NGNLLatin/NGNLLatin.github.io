@@ -1,0 +1,111 @@
+/*
+
+Table of Contents:
+
+1. Font Size, Complex Color Definitions
+2. General Styling
+3. Navigation
+4. The Core Area, The Summary + Notes (main)
+
+*/
+
+/* 1. Font Size, Complex Color Definitions  */
+
+:root {
+	--fs-general: clamp(1.2rem, 2vw, 1.47rem);
+	
+	--clr-links-base: #40F0E0;
+	--clr-links-hover: #11FF00;
+	
+	--clr-nav-bg: rgba(100, 100, 100, 0.4);
+	--clr-nav-border: rgba(0, 115, 255, 0.5);
+	--clr-main-bg: rgba(0, 115, 255, 0.33);
+}
+
+/* 2. General Styling */
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	word-wrap: break-word;
+	
+	background-image: url('../backgrounds_and_icons/the_little_goddess.webp');
+	background-size: cover;
+	background-repeat: none;
+	background-attachment: fixed;
+	
+	font-size: var(--fs-general);
+	color: white;
+	text-shadow: 2px 1px black; 
+}
+
+a {
+	text-decoration: none;
+	color: var(--clr-links-main);
+}
+
+a:hover {
+	color: var(--clr-links-hover);
+}
+
+a:active {
+	color: lightgreen;
+	outline: 2px solid red;
+}
+
+.center {
+	text-align: center;
+}
+
+/* 3. Navigation */
+
+/* The nav element may seem irrelevant.
+
+It is there for screen readers, we hope it helps immediately identify the sections of the page.
+
+Screen reader users may hopefully, with as much ease as that which a visual user has, get a first glimpse of the page  */
+
+
+nav a {
+	background-color: var(--clr-nav-bg);
+	padding: 0.5rem 0.55rem;
+	border-inline: 0.3rem solid var(--clr-nav-border);
+}
+
+/* 4. The Core Area, The Summary + Notes (main) */
+
+main {
+	width: 80%;
+	margin-inline: auto;
+	background-color: var(--clr-main-bg);
+	border: 2px solid green;
+}
+
+main p {
+	text-indent: 4ch;
+	width: min(75ch, 93%);
+	margin-inline: auto;
+}
+
+/* Title: 
+-First heading, most important heading (title)
+-No space above.  */
+
+.title, .heading {
+	text-shadow: 2px 2px black;
+}
+
+.heading {
+	margin-top: 1.618em;
+}
+
+.TLnotes {
+	margin-top: 5em;
+}
+
+.TLheading {
+	color: blue;
+}
